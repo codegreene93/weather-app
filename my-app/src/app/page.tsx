@@ -1,5 +1,7 @@
-import axios from "axios";
+"use client"; // This is a client component 
+import Image from "next/image"
 import { KeyboardEventHandler, MouseEventHandler, useState } from "react";
+import axios from "axios";
 import { BsSearch } from "react-icons/bs";
 
 export default function Home() {
@@ -23,8 +25,8 @@ export default function Home() {
   }
   return (
     <main>
-     <h1>{"Hello World"}</h1>
-     <button onClick={fetchWeather}>Get Weather</button>
+
+      <Image alt="" fill src="https://images.unsplash.com/photo-1527482797697-8795b05a13fe?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHdlYXRoZXJ8ZW58MHx8MHx8fDA%3D" />
     </main>
   );
 }
