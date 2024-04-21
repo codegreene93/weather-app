@@ -1,6 +1,7 @@
 "use client"; // This is a client component 
-import Image from "next/image"
-import { KeyboardEventHandler, MouseEventHandler, useState } from "react";
+import Image from "next/image";
+import WeatherDisplay  from "../app/Components/Weather-display"
+import { useState } from "react";
 import axios from "axios";
 import { BsSearch } from "react-icons/bs";
 
@@ -17,7 +18,6 @@ export default function Home() {
     setLoading(true);
     axios.get(url).then(response => {
       setWeather(response.data)
-      console.log(response.data)
     })
     setCity('');
     setLoading(false);
@@ -41,9 +41,12 @@ export default function Home() {
             <div>
               <input onChange={(e) => setCity(e.target.value)} className="bg-transparent border-none text-white focus:outline-none text-2xl " type="text" placeholder="Search city"/>
             </div>
-            <button onClick={fetchWeather}><BsSearch size={20}/></button>
+            <button disabled={loading} onClick={fetchWeather}><BsSearch size={20}/></button>
           </form>
         </div>
+
+        {/* Weather Output */}
+        {weather.main && <WeatherDisplay data={weather} />}
     </main>
   );
 }
